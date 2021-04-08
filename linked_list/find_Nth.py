@@ -14,10 +14,8 @@ def nth_from_last(head, n):
         curr = curr.child
         depth += 1
 
-    if pos: 
-        return  depth - pos
-    else:
-        return None
+    return  depth - pos if pos else None
+
     
     
 current = Node(1)
