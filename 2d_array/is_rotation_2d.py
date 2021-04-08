@@ -23,5 +23,8 @@ b_check = [[13, 9, 5, 1],[14, 10, 6, 2],[15, 11, 7, 3],[16, 12, 8, 4]]
 
 a_new = is_rotation(a1,3)
 b_new = is_rotation(b2,4)
-print(flatten(a_new) ==  flatten(a2))
-print(flatten(b_new) == flatten(b_check))
+print(flatten(a_new) , flatten(a2))
+print(b_new , b_check)
+
+## FUCNTION --> 2*m memory
+## VAR --> 1*m memory
