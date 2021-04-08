@@ -34,6 +34,28 @@ def quicksort(list, start, end):
     # recursive call on right side of partition
     quicksort(list,lesser_then_pointer+1,end)
 
+def qs_no_mods(arr):
+  " alternative approach to the quicksort algo that uses no external modules "
+  if len(arr) <= 1:
+    return arr
+ 
+  smaller = []
+  larger = []
+  
+  pivot = 0
+  pivot_element = arr[pivot]
+  
+  for i in range(1, len(arr)):
+    if arr[i] > pivot_element:
+      larger.append(arr[i])
+    else:
+      smaller.append(arr[i])
+ 
+  sorted_smaller = qs_no_mods(smaller)
+  sorted_larger = qs_no_mods(larger)
+ 
+  return sorted_smaller + [pivot_element] + sorted_larger
+
 
 " *** RANDOM TESTS *** " 
 x = [5,3,1,7,4,6,2,8]
