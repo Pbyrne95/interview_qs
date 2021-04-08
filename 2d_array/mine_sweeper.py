@@ -50,17 +50,52 @@ class mineSweeper:
                             arr[i][j] += 1
         return arr
 
+    #Mine sweeper expansion 
+    def click(self,field,num_rows,num_cols,given_i,given_j):
+        import queue
+        to_check = queue.Queue()
+
+        if field[given_i][given_j] == 0:
+            field[given_i][given_j] = -2
+            to_check.put((given_i,given_j))
+        else:
+            return field
+        
+        while not to_check.empty():
+            (current_i,current_j) = to_check.get()
+            for i in range(current_i - 1, current_i + 2):
+                for j in range(current_j - 1 , current_j + 2):
+                    if ( 0 <= i < num_rows \
+                        and 0 <= j < num_cols\
+                            and field[i][j] == 0):
+                            
+                            field[i][j] = - 2
+                            to_check.put((i,j))
+        return field
+
     def flatten(self,arr):
-        flats =  lambda l: sum(map(self.flatten,l),[]) if isinstance(l,list) else [l]
+        flats =  lambda l: sum(map(self.flatten,l),[]) if isinstance(l,(list,tuple)) else [l]
         return flats(arr)
 
 if __name__ == "__main__":
     temp = mineSweeper()
+    
     # print(temp.insert_warning(temp.insert_bombs([[0,0],[0,1]], 3, 4)))
     # print(temp.insert_warning(temp.insert_bombs([[0, 0], [0, 1], [1, 2]], 3, 4)))
     # print(temp.flatten(temp.insert_warning(temp.insert_bombs([[1, 1], [1, 2], [2, 2], [4, 3]], 5, 5))))
-    x = temp.flatten(temp.insert_warning(temp.insert_bombs([[0, 2], [2, 0]], 3, 3)))
-    check_1 = temp.flatten([[0, 1, -1],[1, 2, 1],[-1, 1, 0]])
-    print(x)
-    print(check_1)
-    print(x == check_1)
+    # x = temp.flatten(temp.insert_warning(temp.insert_bombs([[0, 2], [2, 0]], 3, 3)))
+    # check_1 = temp.flatten([[0, 1, -1],[1, 2, 1],[-1, 1, 0]])
+    # print(x)
+    # print(check_1)
+    # print(x == check_1)
+    """ MINE SWEEPER EXPANSION CHECK """
+    field1 = [[0, 0, 0, 0, 0],[0, 1, 1, 1, 0],[0, 1, -1, 1, 0]]
+
+    res_1 = [[-2, -2, -2, -2, -2],[-2, 1, 1, 1, -2],[-2, 1, -1, 1, -2]]
+    field_1_comp = temp.click(field1,3,5,0,1)
+    print(temp.flatten(res_1) == temp.flatten(field_1_comp))
+    field2 = [[-1, 1, 0, 0],[1, 1, 0, 0],[0, 0, 1, 1],[0, 0, 1, -1]]
+    field_1_un_pack = temp.click(field2,4,4,0,1)
+    print(field_1_un_pack)
+    check_f_one = temp.click(field2,4,4,1,3)
+    print(check_f_one)

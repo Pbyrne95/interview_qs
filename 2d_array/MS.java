@@ -2,47 +2,6 @@ import java.util.Arrays;
 
 public class MS {
 
-    public static int[][] insert_warnings(int[][] arr)
-    {   
-        for ( int idx = 0 ; idx < arr.length ; idx ++)
-        {   
-            // define outer loop rules 
-
-            boolean check_up = idx - 1 <= 0;
-            boolean check_down = idx + 1 < arr.length;
-            boolean check_left = idx - 1 < 0 ; 
-            boolean cheak_right = idx + 1 < arr.length;
-
-            for ( int j = 0 ; j < arr[idx].length ; j ++)
-            {   
-                // define inner loop rules
-                int upward_pos = idx - 1;
-                int downward =  idx + 1;
-                int up_right = j + 1;
-                int up_left = j - 1;
-                int current_pos = arr[idx][j];
-
-                if ( up_left >= 0 )
-                {
-                    if ( arr[idx][up_left] == - 1 && current_pos >= 0)
-                    {
-                        arr[idx][j] += 1;
-                    }
-                }
-                if ( up_right < arr[idx].length )
-                {
-                    if ( arr[idx][up_right] == -1 && current_pos >= 0 )
-                    {
-                        arr[idx][j] += 1;
-                    }
-                }
-
-            }
-        }
-
-
-        return arr;
-    }
     public static void main(String[] args) {
         // NOTE: The following input values will be used for testing your solution.
         int[][] bombs1 = {{0, 2}, {2, 0}};
@@ -70,19 +29,21 @@ public class MS {
     // Implement your solution below.
     public static int[][] mineSweeper(int[][] bombs, int numRows, int numCols) {
         int[][] field = new int[numRows][numCols];
-        for ( int i = 0 ; i < field.length ; i ++)
-        {
-            for ( int j = 0 ; j < field[i].length ; j ++)
-            {
-                field[i][j] = 0;
+        for (int[] bomb: bombs) {
+            int rowIndex = bomb[0];
+            int colIndex = bomb[1];
+            field[rowIndex][colIndex] = -1;
+            for(int i = rowIndex - 1; i < rowIndex + 2; i++) {
+                for (int j = colIndex - 1; j < colIndex + 2; j++) {
+                    if (0 <= i && i < numRows &&
+                            0 <= j && j < numCols &&
+                            field[i][j] != -1) {
+                        field[i][j] += 1;
+                    }
+                }
             }
-        }
-        for ( int i = 0 ; i < bombs.length ; i ++){
-                int index = bombs[i][0];
-                int insert_bomb = bombs[i][1];
-
-                field[index][insert_bomb] = -1;
         }
         return field;
     }
+    
  }
