@@ -35,9 +35,7 @@ public class MS {
             field[rowIndex][colIndex] = -1;
             for(int i = rowIndex - 1; i < rowIndex + 2; i++) {
                 for (int j = colIndex - 1; j < colIndex + 2; j++) {
-                    if (0 <= i && i < numRows &&
-                            0 <= j && j < numCols &&
-                            field[i][j] != -1) {
+                    if (0 <= i && i < numRows && 0 <= j && j < numCols && field[i][j] != -1) {
                         field[i][j] += 1;
                     }
                 }

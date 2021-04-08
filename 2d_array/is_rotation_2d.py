@@ -1,5 +1,3 @@
-import copy
-
 
 def is_rotation(given_arr,n):
     rot = [[0] * n  for i in range(0,n)]
