@@ -58,7 +58,7 @@ def lca(head,attr1,attr2):
 
     if list_one and list_two:
         merged_list = list(set(list_one).intersection(list_two))
-        return min(merged_list) if merged_list else head_val
+        return Node(min(merged_list)).value if merged_list else head_val
 
 def create_tree(mapping, head_value):
     head = Node(head_value)
