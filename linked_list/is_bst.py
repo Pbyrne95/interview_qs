@@ -33,7 +33,7 @@ def is_bst(node, lower_lim=None, upper_lim=None):
     while search_right.left and search_right.right:
         if(search_right.value > head_node):
             previous = search_right.value
-            
+             
             left_val = search_right.left.value
             right_val = search_right.right.value
        
