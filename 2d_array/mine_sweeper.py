@@ -79,8 +79,9 @@ class mineSweeper:
 
 if __name__ == "__main__":
     temp = mineSweeper()
-    
-    # print(temp.insert_warning(temp.insert_bombs([[0,0],[0,1]], 3, 4)))
+    print(temp.insert_bombs([[0,0],[0,1]],3,4))
+    print(temp.insert_warning(temp.insert_bombs([[0,0],[0,1]], 3, 4)))
+
     # print(temp.insert_warning(temp.insert_bombs([[0, 0], [0, 1], [1, 2]], 3, 4)))
     # print(temp.flatten(temp.insert_warning(temp.insert_bombs([[1, 1], [1, 2], [2, 2], [4, 3]], 5, 5))))
     # x = temp.flatten(temp.insert_warning(temp.insert_bombs([[0, 2], [2, 0]], 3, 3)))
@@ -89,13 +90,12 @@ if __name__ == "__main__":
     # print(check_1)
     # print(x == check_1)
     """ MINE SWEEPER EXPANSION CHECK """
-    field1 = [[0, 0, 0, 0, 0],[0, 1, 1, 1, 0],[0, 1, -1, 1, 0]]
-
-    res_1 = [[-2, -2, -2, -2, -2],[-2, 1, 1, 1, -2],[-2, 1, -1, 1, -2]]
-    field_1_comp = temp.click(field1,3,5,0,1)
-    print(temp.flatten(res_1) == temp.flatten(field_1_comp))
-    field2 = [[-1, 1, 0, 0],[1, 1, 0, 0],[0, 0, 1, 1],[0, 0, 1, -1]]
-    field_1_un_pack = temp.click(field2,4,4,0,1)
-    print(field_1_un_pack)
-    check_f_one = temp.click(field2,4,4,1,3)
-    print(check_f_one)
+    # field1 = [[0, 0, 0, 0, 0],[0, 1, 1, 1, 0],[0, 1, -1, 1, 0]]
+    # res_1 = [[-2, -2, -2, -2, -2],[-2, 1, 1, 1, -2],[-2, 1, -1, 1, -2]]
+    # field_1_comp = temp.click(field1,3,5,0,1)
+    # print(temp.flatten(res_1) == temp.flatten(field_1_comp))
+    # field2 = [[-1, 1, 0, 0],[1, 1, 0, 0],[0, 0, 1, 1],[0, 0, 1, -1]]
+    # field_1_un_pack = temp.click(field2,4,4,0,1)
+    # print(field_1_un_pack)
+    # check_f_one = temp.click(field2,4,4,1,3)
+    # print(check_f_one)
