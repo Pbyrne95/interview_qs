@@ -1,70 +1,56 @@
 import java.util.*;
 
-public class DoubleLink
-{   
+public class DoubleLink {   
 
     private ListNode head;
     private ListNode tail;
     private int length;
 
+    private class ListNode{
 
-    private class ListNode
-    {
         private int data;
         private ListNode next;
         private ListNode previous;
 
-        public ListNode(int data)
-        {
+        public ListNode(int data){
             this.data = data;
         }
 
     }
 
-    public DoubleLink()
-    {
+    public DoubleLink(){
+
         this.head = null;
         this.tail = null;
         this.length = 0;
     }
 
-    public List<Integer> showNodes()
-    {   
+    public List<Integer> showNodes(){   
         List<Integer> allNodes = new ArrayList<Integer>();
 
-        if(this.head == null)
-        {
+        if(this.head == null){
             return allNodes;
         }
-        else
-        {
+        else{
             ListNode peek = head;
-            int iterations = 0;
-            while(peek != null )
-            {
+            while(peek != null ){
                 Integer addPeek = (Integer) peek.data;
                 allNodes.add(addPeek);
                 peek = peek.next;
             }
-
             return allNodes;
-
         }
     }
 
-
-    public boolean isEmpty()
-    {
+    public boolean isEmpty(){
         return ( this.length == 0 );
     }
 
-    public int length()
-    {
+    public int length(){
         return this.length;
     }
 
-    public void insertFirst( int value )
-    {
+    public void insertFirst( int value ){
         ListNode newNode = new ListNode(value);
 
         if(this.isEmpty()){
@@ -73,14 +59,12 @@ public class DoubleLink
             head.previous = newNode;
         }
 
-
         newNode.next = head;
         head = newNode;
         this.length++;
     }
 
-    public void insertTail( int value )
-    {
+    public void insertTail( int value ){
         ListNode newTailNode = new ListNode(value);
 
         if(isEmpty()){
@@ -94,8 +78,7 @@ public class DoubleLink
         tail = newTailNode;
     }
 
-    public DoubleLink.ListNode removeNode( int value )
-    {
+    public DoubleLink.ListNode removeNode( int value ){
         ListNode searchNode = head;
 
         if(isEmpty() || (! this.showNodes().contains((Integer) value) ) ) {
@@ -118,12 +101,9 @@ public class DoubleLink
             return tail;
         }
 
-        
-
         else{
             
-            while ( searchNode != null )
-            {
+            while ( searchNode != null ){
                 if( searchNode.data == toRemove.data ){
                     ListNode temp = searchNode.next;
                     searchNode.previous.next = temp;
@@ -132,25 +112,19 @@ public class DoubleLink
                 }
                 searchNode = searchNode.next;
             }
-
-
         }
         return searchNode;
-
     }
 
-    public Integer getHead()
-    {
+    public Integer getHead(){
         return (Integer) head.data;
     }
 
-    public Integer getTail()
-    {
+    public Integer getTail(){
         return (Integer) tail.data;
     }
 
-    public static void main ( String [] args )
-    {
+    public static void main ( String [] args ){
         DoubleLink test = new DoubleLink();
         test.insertFirst(4);
         test.insertFirst(3);
@@ -159,6 +133,7 @@ public class DoubleLink
         test.removeNode(4);
         test.insertTail(6);
         System.out.println(test.showNodes());
-        
+        System.out.println(test.getTail());
+        System.out.println(test.getHead());
     }
 }

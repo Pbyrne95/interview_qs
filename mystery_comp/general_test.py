@@ -26,7 +26,6 @@ class fib:
             counter+=1
         return sum(self.outputList)
 
-
 def common_elems(lis_one,lis_two):
     """ Quistion 2 """
     return list(sorted(set([i for i in lis_one if i in lis_two])))
@@ -41,8 +40,8 @@ def sum_til_len(num,leng=4):
     
 
 if __name__ == "__main__":
-    # print(sum_til_len(3))
-    # print(common_elems([1,1,1,1,1,1,1,1,1,4,5,9,3,49586,9102,32,999999,32,32,32,32,32],[1,1,1,1,1,1,1,1,1,1,2,3,4,40495,5,6,7,8,32,32,32,32,9,9,9,9,9,9,9]))
+    print(sum_til_len(3)) 
+    print(common_elems([1,1,1,1,1,1,1,1,1,4,5,9,3,49586,9102,32,999999,32,32,32,32,32],[1,1,1,1,1,1,1,1,1,1,2,3,4,40495,5,6,7,8,32,32,32,32,9,9,9,9,9,9,9]))
     temp = fib()
     print(temp.get_first_100(100))
     print(is_all_even(124))

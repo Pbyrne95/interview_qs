@@ -8,6 +8,7 @@ public class countBrackets
         bracketPair.put('(', ')');
         bracketPair.put('[', ']');
         bracketPair.put('{', '}');
+        
         Stack<Character> charStack = new Stack<Character>();
 
               for(int i =0;i<strs.length();i++)

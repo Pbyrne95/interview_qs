@@ -3,7 +3,7 @@ class num_gen:
     def even_gen(self,range_of,divisor=3):
         
         for i in range(range_of):
-            if i % 3 == 0:
+            if i % divisor == 0:
                 yield i
 
     def produce_nums(self,range_of,divisor=3):
