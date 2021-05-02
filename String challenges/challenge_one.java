@@ -31,8 +31,7 @@ public class challenge_one {
     public static void main( String [] args)
     {
         challenge_one test = new challenge_one();
-
-   
+  
         int[] array1 = {1, 3, 1, 3, 2, 1};
         // mostFrequent(array2) should return 3.
         int[] array2 = {3, 3, 1, 3, 2, 1};

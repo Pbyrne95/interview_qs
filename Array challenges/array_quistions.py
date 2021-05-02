@@ -10,6 +10,7 @@ class arr_challenges:
                 index_to = i
                 flag = True
                 break
+            
         if not flag:
             return False         
         return list2[index_to:] + list2[:index_to] == list1
@@ -20,7 +21,6 @@ class arr_challenges:
         lis = list({k:v for k,v in dict(collections.Counter([i for i in strs])).items() if v <= 1}.keys())
         return lis[0] if len(lis) >=1 else None
     
-
     def is_one_away(self,strs1,strs2): 
         """ Uses helper functions diff_size and same_size to determine if an array is one element away from the other"""      
         if len(max(strs1,strs2, key=len)) - len(min(strs1,strs2 , key=len)) > 1:
@@ -33,11 +33,9 @@ class arr_challenges:
     def diff_size(self,strs1,strs2):
         max_l = max(strs1,strs2, key=len)
         min_l = min(strs1,strs2 , key=len)
-
-        max_set = [i for i in max_l if i not in min_l]
-        if len(max_set) > 1:
+        if len([i for i in max_l if i not in min_l]) > 1:
             return False
-        return "".join(sorted(list(max_l))) ==  "".join(sorted(list(min_l)+max_set))
+        return "".join(sorted(list(max_l))) ==  "".join(sorted(list(min_l)+[i for i in max_l if i not in min_l]))
         
     def same_size(self,strs1,strs2):
         count = 0
