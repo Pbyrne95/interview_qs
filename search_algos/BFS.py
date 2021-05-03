@@ -9,7 +9,6 @@ def bfs(graph, start_vertex, target_value):
     visited.add(current_vertex)
     
     for neighbor in graph[current_vertex]:
-      # Finish the function here:
       if neighbor not in visited:
         if neighbor in [target_value]:
           path.append(neighbor)
