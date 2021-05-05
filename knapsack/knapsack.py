@@ -41,7 +41,6 @@ def knapsack():
             break
         p1+=1
 
-        
     return upper_prof,most_profitable_items
 
 w = [i[0] for i in list(get_data().values())]
@@ -81,7 +80,6 @@ def knapSack(W, wt, val, n):
     return K[n][W]
 
 if __name__ == "__main__":
-    
 
     v = [i[1] for i in list(get_data().values())]
     w = [i[0] for i in list(get_data().values())]
