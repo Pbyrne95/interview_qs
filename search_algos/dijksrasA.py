@@ -32,16 +32,16 @@ distances_from_a = dijkstras(graph, 'A')
 print("\n\nShortest Distances: {0}".format(distances_from_a))
 
 
-def heuristic(start, target):
-  x_distance = abs(start.position[0] - target.position[0])
-  y_distance = abs(start.position[1] - target.position[1])
-  return x_distance + y_distance
+def manhattan(start, target):
+    x_distance = abs(start.position[0] - target.position[0])
+    y_distance = abs(start.position[1] - target.position[1])
+    return x_distance + y_distance
 
 # Euclidean Heuristic:
 def euclidean(start, target):
- x_distance = abs(start.position[0] - target.position[0])**2
- y_distance = abs(start.position[1] - target.position[1])**2
- return math.sqrt(x_distance + y_distance )
+    x_distance = abs(start.position[0] - target.position[0])**2
+    y_distance = abs(start.position[1] - target.position[1])**2
+    return math.sqrt(x_distance + y_distance )
 
 
 def a_star(graph, start, target):
