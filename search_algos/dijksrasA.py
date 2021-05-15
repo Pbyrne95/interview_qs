@@ -67,7 +67,6 @@ def a_star(graph, start, target):
         print("\nAt " + vertices_to_explore[0][1].name)
         
   print("Found a path from {0} to {1} in {2} steps: ".format(start.name, target.name, count), paths_and_distances[target][1])
-  
   return paths_and_distances[target][1]
 
 # Call a_star() on manhattan_graph to find the best route

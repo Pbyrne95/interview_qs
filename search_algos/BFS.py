@@ -10,9 +10,11 @@ def bfs(graph, start_vertex, target_value):
     
     for neighbor in graph[current_vertex]:
       if neighbor not in visited:
+
         if neighbor in [target_value]:
           path.append(neighbor)
           return path
+  
         else:
           temp = [neighbor, path+[neighbor]]
           bfs_queue.append(temp)

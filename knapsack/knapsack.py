@@ -90,4 +90,4 @@ if __name__ == "__main__":
     n = len(val)
 
     print(knapsack())
-    print(knapSack(W, wt, val, n))
+    # print(knapSack(W, wt, val, n))
