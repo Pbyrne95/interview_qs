@@ -13,10 +13,7 @@ def get_data(filename):
                 index+=1
     return return_dict
                 
-# dic = get_data(file)
-# for i in dic:
-#     print(i,dic[i])
- 
+
 test_bound = {1:[3,2],
               2:[8,12],
               3:[6,9],
@@ -44,7 +41,32 @@ def brute_force(items,max_weight=165):
 
     return knapsack , best_weight , best_value
 
-# x = get_data(file)
-# print(brute_force(x))
-# print(10**2)
+def dynamic_knapsack(weight_cap, weights, values):
+  rows = len(weights) + 1
+  cols = weight_cap + 1
+  # Set up 2D array
+  matrix = [ [] for x in range(rows) ]
+
+  # Iterate through every row
+  for index in range(rows):
+    # Initialize columns for this row
+    matrix[index] = [ -1 for y in range(cols) ]
+
+    # Iterate through every column
+    for weight in range(cols):
+      # Write your code here
+      if index or weight == 0:
+        matrix[index][weight] = 0
+      elif weights[index-1] <= weight:
+        including = values[index-1] + weights[weights-[index-1]]
+        excluding = matrix[index-1][weight]
+        matrix[index][weight] = max(including,excluding)
+      else:
+        matrix[index][weight] = matrix[index - 1][weight]
+  # Return the value of the bottom right of matrix
+  return matrix[rows-1][weight_cap]
+
+x = get_data(file)
+print(brute_force(x))
+print(10**2)
 

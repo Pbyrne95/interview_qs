@@ -47,7 +47,7 @@ public class NR {
         
         for( char c: s.toCharArray())
         {
-            if(dict.get(c) == 1){
+            if(dict.get(c) == 1){      
                 return c;
             }
         }
