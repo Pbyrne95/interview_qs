@@ -12,26 +12,24 @@ FILENAMES = ["orders.json","boxes.json"]
 
 def get_json_data(file_name,root_str=ROOT_STR):
     """ OPENS A JSON FILE LOCATED ANYWHERE ON THE LOCAL OS SYSTEM """
+    def __open_j_file(file_name):
+        try:
+            with open(file_name,"r") as f: return json.load(f)
+        except IOError:
+            return None
+    
     if file_name not in os.listdir():
         try:
             file_found = [i for i in glob.glob(root_str+"/**/*.json",recursive=True) if file_name in i]
             if file_found:
-                return open_j_file(file_found[0])
+                return __open_j_file(file_found[0])
             return None
 
         except IOError:
             return None
             
     else:
-        return open_j_file(file_name)
-
-
-def open_j_file(file_name):
-    """ returns a the data contained in a file """
-    try:
-        with open(file_name,"r") as f: return json.load(f)
-    except IOError:
-        return None
+        return __open_j_file(file_name)
 
 
 class calc_demension_class:
@@ -88,20 +86,30 @@ def calculate_difference(orders_data, boxes_data):
                 amount_each_box_type[amounts] += 1 
                 break
                 
-    total_amount_actaul = sum([(k,(v*carbon_sort_lrg_smal.get(k)))[1] for k,v in amount_each_box_type.items()])
-    total_amount_max = sum([v for v in amount_each_box_type.values()]) * max(list(carbon_sort_lrg_smal.values()))
+    total_amount_actaul = sum([(k,(v*carbon_sort_lrg_smal.get(k)))[1] \
+        for k,v in amount_each_box_type.items()])
+        
+    total_amount_max = sum([v for v in amount_each_box_type.values()])\
+         * max(list(carbon_sort_lrg_smal.values()))
     
-    return total_amount_max - total_amount_actaul > 1000.0 
-    
+    return {
+            "total_amount_max ": total_amount_max,
+            "total_amount_actaul ": total_amount_actaul,
+            "Truck_saved ": ( total_amount_max - total_amount_actaul > 1000.0 )
+            }   
+
+
+
+
 
 if __name__ == "__main__":
 
     orders_dict = get_json_data(FILENAMES[0])
     boxes = get_json_data(FILENAMES[1])
     
-    
     orders_cleaned = get_total_volume(orders_dict)
     boxes_cleaned = convert_dem_vol(boxes)
     large_demension = np.prod([20,100,50])/1000
 
     print(calculate_difference(orders_cleaned,boxes_cleaned))
+
